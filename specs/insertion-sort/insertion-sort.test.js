@@ -14,7 +14,16 @@
 */
 
 function insertionSort(nums) {
-  // code goes here
+  for (let i = 0; i < nums.length; i++){
+    let numberToInsert = nums[i];
+    let j;
+
+    for (j = i - 1; nums[j] > numberToInsert && j >= 0; j--) {
+      nums[j + 1] = nums[j];
+    }
+    nums[j + 1] = numberToInsert;
+  }
+  return nums;
 }
 
 // unit tests
