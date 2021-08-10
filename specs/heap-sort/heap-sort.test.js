@@ -7,17 +7,48 @@
 */
 
 const heapSort = (array) => {
-  // code
+  array = createMaxHeap(array);
+  
+  for (let i = array.length - 1; i > 0; i--){
+    swapPlace(0, i, array);
+    heapify(array, 0, i)
+  }
   return array;
 };
 
 const createMaxHeap = (array) => {
-  // code
+  for (let i = Math.floor(array.length / 2) - 1; i > 0; i--){
+    heapify(array, i, array.length);
+  }
+  return array;
 };
 
 const heapify = (array, index, heapSize) => {
-  // code
+  const left = 2 * index + 1;
+  const right = 2 * index + 2;
+
+  let largestValueIndex = index;
+
+  if (heapSize > left && array[largestValueIndex] < array[left]) {
+    largestValueIndex = left;
+  }
+
+  if (heapSize > right && array[largestValueIndex] < array[right]) {
+    largestValueIndex = right;
+  }
+
+  if (largestValueIndex !== index) {
+    swapPlace(index, largestValueIndex, array);
+    heapify(array, largestValueIndex, heapSize);
+  }
 };
+
+const swapPlace = (array, index, heapSize) => {
+  let temp = array[index1];
+  array[index1] = array[index2];
+  array[index2] = temp;
+  return array;
+}
 
 // unit tests
 // do not modify the below code
